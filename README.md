@@ -61,15 +61,16 @@ cd scripts; touch nextflow_script.nf
 - Processes
 - Workflow execution block
 ```
-## step 03: Define parameters for our workflow
+### step 03: Define parameters for our workflow
 ```
 // Workflow params
 params.reads = params.reads ?: '~/Workflow-Mg-t-Nextflow-Tutorial-for-Bioinformatics/data/sample.txt'
 // Skip the first  FASTQDUMP if true
 params.skip_fastqdump = false
 ```
-## step 04: Create worflow processes
+### step 04: Create worflow processes
 
+#### FASTQDUMP process
 ```
 // worflow processes
 
@@ -101,6 +102,33 @@ process FASTQDUMP {
     done
     """
 ```
+
+#### FASTQC process
+```
+
+```
+#### MULTIQC process
+```
+
+```
+
+#### FASTP process
+
+```
+
+```
+
+#### MULTIQC_02 process
+```
+
+```
+### step 05: Create  workflow execution block
+
+```
+
+```
+
+
 
 
 
