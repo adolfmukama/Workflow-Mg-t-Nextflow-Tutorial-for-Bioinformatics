@@ -67,6 +67,9 @@ cd scripts; touch nextflow_script.nf
 params.reads = params.reads ?: '~/Workflow-Mg-t-Nextflow-Tutorial-for-Bioinformatics/data/sample.txt'
 // Skip the first  FASTQDUMP if true
 params.skip_fastqdump = false
+params.skip_fastqc01 = false
+params.skip_multiqc01 = false
+params.skip_fastp = false
 ```
 ### step 04: Create worflow processes
 
@@ -101,20 +104,110 @@ process FASTQDUMP {
     
     done
     """
+}
 ```
 
 #### FASTQC process
 ```
+process FASTQC_01 {
+    
+    input:
+    // Input file path for the MiSeq reads 
+    path miseq_reads 
+    // Input file containing a list of sample IDs
+    path reads
+
+    output:
+    // Directory where FastQC results will be saved
+    path "fastqc_results"
+
+    when:
+    // Run this process only if the 'skip_fastqc01' parameter is not set (or is false)
+    !params.skip_fastqc01
+
+    script:
+
+    """
+    #!/usr/bin/env bash
+    # Create the output directory if it doesn't exist
+    mkdir -p fastqc_results
+    # Loop through each sample ID from the sampleID file
+    for sample in \$(cat "${reads}"); do
+        # Run FastQC for each sample's fastq files and save the output in the fastqc_results directory
+        fastqc "${reads}"/"\${sample}"*.fastq --outdir fastqc_results
+    
+    done
+    """
+}
 
 ```
 #### MULTIQC process
 ```
+process MULTIQC_01 {
+    
+    input:
+    // Input file path for the fastqc results folder
+    path fastqc_results
+
+    output:
+    // Directory where MultiQC results will be saved
+    path "multiqc_01"
+
+    when:
+    // Run this process only if the 'skip_multiqc01' parameter is not set (or is false)
+    !params.skip_multiqc01
+
+    script:
+    """
+    #!/usr/bin/env bash
+
+    # Create the output directory if it doesn't exist 
+    mkdir -p multiq_01
+    multiqc fastqc_results/* --outdir multiqc_01
+    """
+}
 
 ```
 
 #### FASTP process
 
 ```
+process FASTP_A {
+
+    input:
+    // Input file path for the MiSeq reads
+    path reads_miseq
+    // Input file containing a list of sample IDs
+    path sampleID
+
+    output:
+    // Directory where FASTP_A results will be saved
+    path "fastp_output"
+
+    when:
+    // Run this process only if the 'skip_fastp' parameter is not set (or is false)
+    !params.skip_fastp
+
+    script:
+    """
+    # Create the output directory if it doesn't exist
+    mkdir -p fastp_output
+
+    # Loop through each sample ID from the sampleID file
+    for sample in \$(cat \${sampleID}); do
+
+    conda run -n fastp fastp -i "\${reads_miseq}"/"\${sample}"_R1.fastq.gz -I "\${reads_miseq}"/"\${sample}"_R2.fastq.gz \
+              -o fastp_output/"\${sample}"_filtered_fastp_R1.fastq.gz \
+              -O fastp_output/"\${sample}"_filtered_fastp_R2.fastq.gz \
+              --json fastp_output/"\${sample}"_filtered_fastp.json \
+              --html fastp_output/"\${sample}"_filtered_fastp.html \
+              -q 20 --thread 20 \
+              --detect_adapter_for_pe \
+              --cut_tail 20
+
+    done
+    """
+}
 
 ```
 
