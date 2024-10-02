@@ -10,3 +10,15 @@
 - **Parallelization:** Enables concurrent execution of tasks for faster analysis.
 - **Modularity:** Allows for flexible workflow design and reuse of components.
 - **Robust error handling:** Automatically manages task retries and recovery.
+
+  ## Prerequisites
+
+  Before we start ensure that you have the following:
+- .yml files containing the conda environments that we shall use
+- conda / miniforge
+- github account
+- Linux terminal access | wsl for windows | virtual machine
+- 
+### Step 01:
+- Open your terminal and clone this repo
+  ``` git clone '
