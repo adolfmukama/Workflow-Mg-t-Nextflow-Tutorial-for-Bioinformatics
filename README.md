@@ -70,6 +70,7 @@ params.skip_fastqdump = false
 params.skip_fastqc01 = false
 params.skip_multiqc01 = false
 params.skip_fastp = false
+params.skip_multiqc02 = false
 ```
 ### step 04: Create worflow processes
 
@@ -176,9 +177,9 @@ process FASTP_A {
 
     input:
     // Input file path for the MiSeq reads
-    path reads_miseq
+    path miseq_reads
     // Input file containing a list of sample IDs
-    path sampleID
+    path reads
 
     output:
     // Directory where FASTP_A results will be saved
@@ -194,13 +195,13 @@ process FASTP_A {
     mkdir -p fastp_output
 
     # Loop through each sample ID from the sampleID file
-    for sample in \$(cat \${sampleID}); do
+    for sample in \$(cat \${reads}); do
 
-    conda run -n fastp fastp -i "\${reads_miseq}"/"\${sample}"_R1.fastq.gz -I "\${reads_miseq}"/"\${sample}"_R2.fastq.gz \
-              -o fastp_output/"\${sample}"_filtered_fastp_R1.fastq.gz \
-              -O fastp_output/"\${sample}"_filtered_fastp_R2.fastq.gz \
-              --json fastp_output/"\${sample}"_filtered_fastp.json \
-              --html fastp_output/"\${sample}"_filtered_fastp.html \
+    fastp -i "\${miseq_reads}"/"\${sample}"_R1.fastq -I "\${miseq_reads}"/"\${sample}"_R2.fastq \
+              -o fastp_output/"\${sample}"_filt_fastp_R1.fastq \
+              -O fastp_output/"\${sample}"_filt_fastp_R2.fastq \
+              --json fastp_output/"\${sample}"_filt_fastp.json \
+              --html fastp_output/"\${sample}"_filt_fastp.html \
               -q 20 --thread 20 \
               --detect_adapter_for_pe \
               --cut_tail 20
@@ -213,12 +214,60 @@ process FASTP_A {
 
 #### MULTIQC_02 process
 ```
+process MULTIQC_02 {
+    
+    input:
+    // Input file path for the fastp results
+    path fastp_output
+
+    output:
+    // Directory where MultiQC results will be saved
+    path "multiqc_fastp"
+
+    when:
+    // Run this process only if the 'skip_multiqc02' parameter is not set (or is false)
+    !params.skip_multiqc02
+
+    script:
+    """
+    # Create the output directory if it doesn't exist
+    mkdir -p multiqc_02
+    multiqc fastp_output/* --outdir multiqc_fastp
+    """
+}
 
 ```
 ### step 05: Create  workflow execution block
 
 ```
+workflow {
 
+    // Run fastq-dump with the sample list
+    if (!params.skip_fastqdump) {
+        fastqdump_results = FASTQDUMP(params.reads)
+    }
+
+    // Check if the FASTQC analysis for the initial reads should be performed
+    if (!params.skip_fastqc01) {
+        fastqc_results = FASTQC_01(params.reads, fastqdump_results)
+    }
+    
+    // Check if the MultiQC report for the FASTQC results should be generated
+    if (!params.skip_multiqc01) {
+        multiqc_report = MULTIQC_01(fastqc_results)
+    }
+    
+    // Check if the fastp filtering process should be executed
+    if (!params.skip_fastp) {
+        fastp_output = FASTP_A(params.reads, fastqdump_results)
+    }
+
+   
+    // Check if the MultiQC report for the second FASTQC analysis should be generated
+    if (!params.skip_multiqc02) {
+        multiqc_02 = MULTIQC_02(fastp_output)
+    }
+}
 ```
 
 
