@@ -269,6 +269,9 @@ workflow {
     }
 }
 ```
+## Resources
+- [nextflow training](https://training.nextflow.io/basic_training/intro/) <br>
+- [awesome nextflow repo](https://github.com/nextflow-io/awesome-nextflow)
 
 
 
