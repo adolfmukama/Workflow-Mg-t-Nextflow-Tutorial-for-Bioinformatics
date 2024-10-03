@@ -1,0 +1,122 @@
+Oct-02 17:14:23.443 [main] DEBUG nextflow.cli.Launcher - $> nextflow run nextflow_script.nf -c nextflow.config -resume
+Oct-02 17:14:23.911 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 24.04.4
+Oct-02 17:14:23.968 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/jovyan/.nextflow/plugins; core-plugins: nf-amazon@2.5.3,nf-azure@1.6.1,nf-cloudcache@0.4.1,nf-codecommit@0.2.1,nf-console@1.1.3,nf-ga4gh@1.3.0,nf-google@1.13.2-patch1,nf-tower@1.9.1,nf-wave@1.4.2-patch1
+Oct-02 17:14:23.990 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Oct-02 17:14:23.992 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Oct-02 17:14:23.996 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
+Oct-02 17:14:24.015 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Oct-02 17:14:24.048 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /home/jovyan/Workflow-Mg-t-Nextflow-Tutorial-for-Bioinformatics/scripts/nextflow.config
+Oct-02 17:14:24.053 [main] DEBUG nextflow.config.ConfigBuilder - User config file: /home/jovyan/Workflow-Mg-t-Nextflow-Tutorial-for-Bioinformatics/scripts/nextflow.config
+Oct-02 17:14:24.068 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /home/jovyan/Workflow-Mg-t-Nextflow-Tutorial-for-Bioinformatics/scripts/nextflow.config
+Oct-02 17:14:24.069 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /home/jovyan/Workflow-Mg-t-Nextflow-Tutorial-for-Bioinformatics/scripts/nextflow.config
+Oct-02 17:14:24.117 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/jovyan/.nextflow/secrets/store.json
+Oct-02 17:14:24.122 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@469d003c] - activable => nextflow.secret.LocalSecretsProvider@469d003c
+Oct-02 17:14:24.131 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `standard`
+Oct-02 17:14:25.809 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `standard`
+Oct-02 17:14:25.903 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 by global default
+Oct-02 17:14:25.928 [main] DEBUG nextflow.cli.CmdRun - Launching `nextflow_script.nf` [fervent_babbage] DSL2 - revision: a826006142
+Oct-02 17:14:25.931 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Oct-02 17:14:25.932 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Oct-02 17:14:26.014 [main] DEBUG nextflow.Session - Session UUID: fbf119cc-926e-455b-a72a-0a3260eb5ad9
+Oct-02 17:14:26.015 [main] DEBUG nextflow.Session - Run name: fervent_babbage
+Oct-02 17:14:26.015 [main] DEBUG nextflow.Session - Executor pool size: 3
+Oct-02 17:14:26.028 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Oct-02 17:14:26.063 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 24.04.4 build 5917
+  Created: 01-08-2024 07:05 UTC 
+  System: Linux 5.10.217-205.860.amzn2.x86_64
+  Runtime: Groovy 4.0.21 on OpenJDK 64-Bit Server VM 21-internal-adhoc.conda.src
+  Encoding: UTF-8 (UTF-8)
+  Process: 61853@jupyter-adolfmukama [192.168.29.49]
+  CPUs: 3 - Mem: 24 GB (2.8 GB) - Swap: 0 (0) - Virtual threads ON
+Oct-02 17:14:26.206 [main] DEBUG nextflow.Session - Work-dir: /home/jovyan/Workflow-Mg-t-Nextflow-Tutorial-for-Bioinformatics/scripts/work [nfs]
+Oct-02 17:14:26.207 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /home/jovyan/Workflow-Mg-t-Nextflow-Tutorial-for-Bioinformatics/scripts/bin
+Oct-02 17:14:26.219 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Oct-02 17:14:26.234 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Oct-02 17:14:26.288 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Oct-02 17:14:26.298 [main] DEBUG nextflow.util.CustomPoolFactory - Creating virtual thread pool
+Oct-02 17:14:26.475 [main] DEBUG nextflow.Session - Session start
+Oct-02 17:14:26.934 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Oct-02 17:14:27.086 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Oct-02 17:14:27.086 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Oct-02 17:14:27.092 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
+Oct-02 17:14:27.100 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=4; memory=24 GB; capacity=100; pollInterval=100ms; dumpInterval=5m
+Oct-02 17:14:27.102 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: local)
+Oct-02 17:14:27.204 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Oct-02 17:14:27.205 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Oct-02 17:14:27.213 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Oct-02 17:14:27.213 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Oct-02 17:14:27.220 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Oct-02 17:14:27.220 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Oct-02 17:14:27.224 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: FASTQC_01, MULTIQC_02, MULTIQC_01, FASTP_A
+Oct-02 17:14:27.225 [main] DEBUG nextflow.Session - Igniting dataflow network (4)
+Oct-02 17:14:27.225 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > FASTQC_01
+Oct-02 17:14:27.226 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MULTIQC_01
+Oct-02 17:14:27.231 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > FASTP_A
+Oct-02 17:14:27.232 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MULTIQC_02
+Oct-02 17:14:27.234 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Script_9ea4230a1b21d3fc: /home/jovyan/Workflow-Mg-t-Nextflow-Tutorial-for-Bioinformatics/scripts/nextflow_script.nf
+Oct-02 17:14:27.234 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+Oct-02 17:14:27.234 [main] DEBUG nextflow.Session - Session await
+Oct-02 17:14:27.738 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-02 17:14:27.741 [Task submitter] INFO  nextflow.Session - [e7/36279a] Submitted process > FASTQC_01
+Oct-02 17:14:27.787 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-02 17:14:27.788 [Task submitter] INFO  nextflow.Session - [c2/047b7d] Submitted process > FASTP_A
+Oct-02 17:14:27.861 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 1; name: FASTQC_01; status: COMPLETED; exit: 0; error: -; workDir: /home/jovyan/Workflow-Mg-t-Nextflow-Tutorial-for-Bioinformatics/scripts/work/e7/36279a9b35a154b98972fb2e0bf7e9]
+Oct-02 17:14:27.953 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 2; name: FASTP_A; status: COMPLETED; exit: 0; error: -; workDir: /home/jovyan/Workflow-Mg-t-Nextflow-Tutorial-for-Bioinformatics/scripts/work/c2/047b7dfdb0f1ac800ed4e85fd6b9c3]
+Oct-02 17:14:27.979 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-02 17:14:27.980 [Task submitter] INFO  nextflow.Session - [48/65814b] Submitted process > MULTIQC_01
+Oct-02 17:14:28.068 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-02 17:14:28.069 [Task submitter] INFO  nextflow.Session - [11/2dc635] Submitted process > MULTIQC_02
+Oct-02 17:14:31.947 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 4; name: MULTIQC_02; status: COMPLETED; exit: 2; error: -; workDir: /home/jovyan/Workflow-Mg-t-Nextflow-Tutorial-for-Bioinformatics/scripts/work/11/2dc63522328f341728aa7a4a5dfd7c]
+Oct-02 17:14:31.973 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 3; name: MULTIQC_01; status: COMPLETED; exit: 2; error: -; workDir: /home/jovyan/Workflow-Mg-t-Nextflow-Tutorial-for-Bioinformatics/scripts/work/48/65814bdc1e2755e836378035cd9778]
+Oct-02 17:14:31.984 [TaskFinalizer-3] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=MULTIQC_02; work-dir=/home/jovyan/Workflow-Mg-t-Nextflow-Tutorial-for-Bioinformatics/scripts/work/11/2dc63522328f341728aa7a4a5dfd7c
+  error [nextflow.exception.ProcessFailedException]: Process `MULTIQC_02` terminated with an error exit status (2)
+Oct-02 17:14:31.987 [TaskFinalizer-4] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=MULTIQC_01; work-dir=/home/jovyan/Workflow-Mg-t-Nextflow-Tutorial-for-Bioinformatics/scripts/work/48/65814bdc1e2755e836378035cd9778
+  error [nextflow.exception.ProcessFailedException]: Process `MULTIQC_01` terminated with an error exit status (2)
+Oct-02 17:14:32.050 [TaskFinalizer-3] ERROR nextflow.processor.TaskProcessor - Error executing process > 'MULTIQC_02'
+
+Caused by:
+  Process `MULTIQC_02` terminated with an error exit status (2)
+
+
+Command executed:
+
+  # Create the output directory if it doesn't exist
+  mkdir -p multiqc_02
+  conda run -n multiqc multiqc fastp_output/* --outdir multiqc_fastp
+
+Command exit status:
+  2
+
+Command output:
+  (empty)
+
+Command error:
+                                                                                                                               
+   /// MultiQC 🔍 v1.25.1                                                                                                      
+                                                                                                                               
+   Usage: multiqc [OPTIONS] [ANALYSIS DIRECTORY]                                                                               
+                                                                                                                               
+   This is MultiQC v1.25.1                                                                                                     
+   For more help, run 'multiqc --help' or visit http://multiqc.info                                                            
+  ╭─ Error ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+  │ Invalid value for '[ANALYSIS DIRECTORY]': Path 'fastp_output/*' does not exist.                                           │
+  ╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+                                                                                                                               
+  
+  ERROR conda.cli.main_run:execute(124): `conda run multiqc fastp_output/* --outdir multiqc_fastp` failed. (See above for error)
+
+Work dir:
+  /home/jovyan/Workflow-Mg-t-Nextflow-Tutorial-for-Bioinformatics/scripts/work/11/2dc63522328f341728aa7a4a5dfd7c
+
+Tip: you can replicate the issue by changing to the process work dir and entering the command `bash .command.run`
+Oct-02 17:14:32.087 [main] DEBUG nextflow.Session - Session await > all processes finished
+Oct-02 17:14:32.089 [TaskFinalizer-3] DEBUG nextflow.Session - Session aborted -- Cause: Process `MULTIQC_02` terminated with an error exit status (2)
+Oct-02 17:14:32.155 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: local) - terminating tasks monitor poll loop
+Oct-02 17:14:32.156 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Oct-02 17:14:32.178 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=2; failedCount=2; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=153ms; failedDuration=7.7s; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=2; peakCpus=2; peakMemory=0; ]
+Oct-02 17:14:32.371 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Oct-02 17:14:32.440 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye
