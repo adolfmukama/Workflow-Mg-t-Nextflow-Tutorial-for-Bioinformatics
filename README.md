@@ -1,6 +1,5 @@
 # Workflow-Mg-t-Nextflow-Tutorial-for-Bioinformatics
-<details>
-  <summary><h2>Introduction</h2></summary>
+<h2>Introduction</h2>
 
 **Why Nextflow?:** I think its easier to use and simplifies the design and execution of bioinformatics complex workflows, enabling reproducibility and scalability across diverse computing environments. 
 
@@ -21,18 +20,18 @@
 - github account
 - Linux terminal access | wsl for windows | virtual machine
 - Text editor e.g Vscode, nano, vim etc
-  </details>
-  <details>
-  <summary><h3>Step 01: setting our environments</h3></summary>
+  
+<h3>Step 01: setting up our environments</h3>
 - Open your terminal and clone this repo in your home directory <br>
 
   ```
   cd ~
-  ``` 
-  Then 
   ```
-  git clone 'https://github.com/adolfmukama/Workflow-Mg-t-Nextflow-Tutorial-for-Bioinformatics.git'
-```
+
+Then 
+  ```
+git clone 'https://github.com/adolfmukama/Workflow-Mg-t-Nextflow-Tutorial-for-Bioinformatics.git'
+
 cd Workflow-Mg-t-Nextflow-Tutorial-for-Bioinformatics/scripts
 ```
 
@@ -40,39 +39,34 @@ cd Workflow-Mg-t-Nextflow-Tutorial-for-Bioinformatics/scripts
 ```
 bash env_load.sh
 
+// activate the nextflow env
+conda activate nextflow
 ```
 
   #### Acquire data using FASTQDUMP
 
 ```
-
+cd ../
 mkdir -p data
 cd data
 ```
     
-# Run FastQDump for each sample's ID 
-fastq-dump --split-files ERR4920877 ERR4920878
-
+### Run FastQDump for each sample ID 
 ```
-</details>
+fastq-dump --split-files ERR4920877 ERR4920878
+```
 
 ### step 02: create the nexflow script
-- Lets start by creating a dir called scripts in our cloned repo <br>
+- Lets start by navigating to the scripts dir in our cloned repo <br>
 ```
-cd Workflow-Mg-t-Nextflow-Tutorial-for-Bioinformatics
-``` 
-```
-mkdir -p scripts 
-``` 
-- create nextflow file in the scripts dir 
-```
-cd scripts; touch nextflow_script.nf 
+cd Workflow-Mg-t-Nextflow-Tutorial-for-Bioinformatics/scripts
+touch my_nextflow_script.nf 
 ```
 - open the script in your preferred text editor In my case i will use Vs code
   ```
-  code nextflow_script.nf # Vscode users
-  vim nextflow_script.nf # vim users
-  nano nextflow_script.nf # nano users
+  code my_nextflow_script.nf # Vscode users
+  vim my_nextflow_script.nf # vim users
+  nano my_nextflow_script.nf # nano users
 
   ```
 - Basic concepts <br>
@@ -89,6 +83,14 @@ cd scripts; touch nextflow_script.nf
 - Workflow execution block
 ```
 ### step 03: Define parameters for our workflow in a nextflow.config 
+
+Create a nextflow.config file in the scripts dir
+```
+touch nextflow.config
+
+```
+We shall then open the file and in put parameters of our nexflow pipeline
+
 ```
 #!/usr/bin/env nextflow
 
@@ -153,6 +155,7 @@ executor {
 
 ### step 04: Create worflow processes
 
+We can now go back to the nextflow script we created to define the processes for our pipeline
 
 #### FASTQC process
 ```
@@ -262,7 +265,7 @@ process FASTP_A {
 ```
 
 #### FASTQC_02 process
-
+```
 process FASTQC_02 {
     // Specify the Conda environment to use for this process
     conda 'fastqc'
@@ -292,6 +295,7 @@ process FASTQC_02 {
     done
     """
 }
+```
 
 #### MULTIQC_02 process
 ```
@@ -353,6 +357,16 @@ workflow {
 
 }
 ```
+
+### Run our nextflow script
+
+Ensure that you are in the **scripts** directory
+
+```
+nextflow run <your-script> -c nextflow.config 
+```
+You can also add ***-resume*** incase any of the processes fail to restart the pipeline without re running the processes that were successful  
+
 
 
 
