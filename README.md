@@ -22,7 +22,9 @@
 - Linux terminal access | wsl for windows | virtual machine
 - Text editor e.g Vscode, nano, vim etc
   </details>
-### Step 01:
+  
+<details>
+  <summary><h2>Step 01:</h2></summary>
 - Open your terminal and clone this repo in your home directory <br>
 
   ```
@@ -42,8 +44,10 @@ cd data
 fastq-dump --split-files ERR4920877 ERR4920878
 
 ```
+</details>
 
-### step 02: create the nexflow script
+<details>
+  <summary><h2>step 02: create the nexflow script</h2></summary>
 - Lets start by creating a dir called scripts in our cloned repo <br>
 ```
 cd Workflow-Mg-t-Nextflow-Tutorial-for-Bioinformatics
@@ -75,7 +79,10 @@ cd scripts; touch nextflow_script.nf
 - Processes
 - Workflow execution block
 ```
-### step 03: Define parameters for our workflow in a nextflow.config file
+</details>
+
+<details>
+  <summary><h2>step 03: Define parameters for our workflow in a nextflow.config file</h2></summary>
 ```
 #!/usr/bin/env nextflow
 
@@ -137,7 +144,10 @@ executor {
 
 
 ```
-### step 04: Create worflow processes
+</details>
+
+<details>
+  <summary><h2>step 04: Create worflow processes</h2></summary>
 
 
 #### FASTQC process
@@ -308,7 +318,11 @@ process MULTIQC_02 {
 
 
 ```
-### step 05: Create  workflow execution block
+
+</details>
+
+<details>
+  <summary><h2>step 05: Create  workflow execution block</h2></summary>
 
 ```
 workflow {
@@ -338,6 +352,8 @@ workflow {
 
 }
 ```
+</details>
+
 ## Resources
 - [nextflow training](https://training.nextflow.io/basic_training/intro/) <br>
 - [awesome nextflow repo](https://github.com/nextflow-io/awesome-nextflow)
