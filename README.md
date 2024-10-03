@@ -22,9 +22,8 @@
 - Linux terminal access | wsl for windows | virtual machine
 - Text editor e.g Vscode, nano, vim etc
   </details>
-  
-<details>
-  <summary><h2>Step 01:</h2></summary>
+  <details>
+  <summary><h3>Step 01: setting our environments</h3></summary>
 - Open your terminal and clone this repo in your home directory <br>
 
   ```
@@ -33,12 +32,23 @@
   Then 
   ```
   git clone 'https://github.com/adolfmukama/Workflow-Mg-t-Nextflow-Tutorial-for-Bioinformatics.git'
-  ```
-  #### Acquire data using FASTQDUMP
 ```
-cd Workflow-Mg-t-Nextflow-Tutorial-for-Bioinformatics
+cd Workflow-Mg-t-Nextflow-Tutorial-for-Bioinformatics/scripts
+```
+
+***Run script to load the necessary conda envs from the yml files***
+```
+bash env_load.sh
+
+```
+
+  #### Acquire data using FASTQDUMP
+
+```
+
 mkdir -p data
 cd data
+```
     
 # Run FastQDump for each sample's ID 
 fastq-dump --split-files ERR4920877 ERR4920878
