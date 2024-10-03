@@ -80,7 +80,6 @@ cd scripts; touch nextflow_script.nf
 - Workflow execution block
 ```
 </details>
-
 <details>
   <summary><h2>step 03: Define parameters for our workflow in a nextflow.config file</h2></summary>
 ```
@@ -145,7 +144,6 @@ executor {
 
 ```
 </details>
-
 <details>
   <summary><h2>step 04: Create worflow processes</h2></summary>
 
@@ -318,11 +316,9 @@ process MULTIQC_02 {
 
 
 ```
-
 </details>
-
 <details>
-  <summary><h2>step 05: Create  workflow execution block</h2></summary>
+  <summary><h2>step 05:Create  workflow execution block</h2></summary>
 
 ```
 workflow {
@@ -353,6 +349,7 @@ workflow {
 }
 ```
 </details>
+
 
 ## Resources
 - [nextflow training](https://training.nextflow.io/basic_training/intro/) <br>
