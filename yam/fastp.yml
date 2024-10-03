@@ -1,0 +1,8 @@
+name: fastp
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - fastp
+prefix: /opt/conda/envs/fastp

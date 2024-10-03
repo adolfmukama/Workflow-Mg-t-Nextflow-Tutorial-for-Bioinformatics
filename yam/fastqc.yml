@@ -1,0 +1,8 @@
+name: fastqc
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - fastqc
+prefix: /home/KWTRP/amukama/miniforge3/envs/fastqc

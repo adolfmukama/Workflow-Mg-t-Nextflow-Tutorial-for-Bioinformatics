@@ -1,0 +1,8 @@
+name: multiqc
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - multiqc
+prefix: /home/KWTRP/amukama/miniforge3/envs/multiqc
