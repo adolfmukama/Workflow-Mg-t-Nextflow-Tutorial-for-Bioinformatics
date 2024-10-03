@@ -38,8 +38,8 @@ cd Workflow-Mg-t-Nextflow-Tutorial-for-Bioinformatics/scripts
 ```
 bash env_load.sh
 
-// activate the nextflow env
-conda activate nextflow
+// activate the fastqdump env
+conda activate fastqdump
 ```
 
   #### Acquire data using FASTQDUMP
@@ -58,6 +58,10 @@ fastq-dump --split-files ERR4920877 ERR4920878
 ### step 02: create the nexflow script
 - Lets start by navigating to the scripts dir in our cloned repo <br>
 ```
+// activate the nextflow env
+conda activate nextflow
+
+
 cd Workflow-Mg-t-Nextflow-Tutorial-for-Bioinformatics/scripts
 touch my_nextflow_script.nf 
 ```
