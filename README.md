@@ -46,8 +46,7 @@ fastq-dump --split-files ERR4920877 ERR4920878
 ```
 </details>
 
-<details>
-  <summary><h2>step 02: create the nexflow script</h2></summary>
+### step 02: create the nexflow script
 - Lets start by creating a dir called scripts in our cloned repo <br>
 ```
 cd Workflow-Mg-t-Nextflow-Tutorial-for-Bioinformatics
@@ -79,9 +78,7 @@ cd scripts; touch nextflow_script.nf
 - Processes
 - Workflow execution block
 ```
-</details>
-<details>
-  <summary><h2>step 03: Define parameters for our workflow in a nextflow.config file</h2></summary>
+### step 03: Define parameters for our workflow in a nextflow.config 
 ```
 #!/usr/bin/env nextflow
 
@@ -143,9 +140,8 @@ executor {
 
 
 ```
-</details>
-<details>
-  <summary><h2>step 04: Create worflow processes</h2></summary>
+
+### step 04: Create worflow processes
 
 
 #### FASTQC process
@@ -316,9 +312,8 @@ process MULTIQC_02 {
 
 
 ```
-</details>
-<details>
-  <summary><h2>step 05:Create  workflow execution block</h2></summary>
+
+### step 05:Create  workflow execution block
 
 ```
 workflow {
@@ -348,7 +343,7 @@ workflow {
 
 }
 ```
-</details>
+
 
 
 ## Resources
