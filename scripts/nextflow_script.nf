@@ -85,12 +85,9 @@ process FASTP_A {
     mkdir -p fastp_output
     
     # Loop through each sample ID from the sampleID file
-    for sample in \$(cat "${sampleID}"); do
-        if [[ -f "${reads_miseq}/\${sample}_1.fastq" && -f "${reads_miseq}/\${sample}_2.fastq" ]]; then
-            echo "Processing sample: \${sample}"
-            
-            conda run -n fastp fastp -i "${reads_miseq}/\${sample}_1.fastq" \
-                      -I "${reads_miseq}/\${sample}_2.fastq" \
+    for sample in \$(cat "\${sampleID}"); do
+        conda run -n fastp fastp -i "${reads_miseq}"/\${sample}_1.fastq \
+                      -I "${reads_miseq}"/\${sample}_2.fastq \
                       -o fastp_output/\${sample}_filt_fastp_R1.fastq \
                       -O fastp_output/\${sample}_filt_fastp_R2.fastq \
                       --json fastp_output/\${sample}_filt_fastp.json \
@@ -98,9 +95,7 @@ process FASTP_A {
                       -q 20 --thread 10 \
                       --detect_adapter_for_pe \
                       --cut_tail 20
-        else
-            echo "Input files for sample \${sample} not found. Skipping."
-        fi
+    
     done
     """
 }
