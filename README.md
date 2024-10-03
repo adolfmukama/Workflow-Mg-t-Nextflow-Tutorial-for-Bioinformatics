@@ -15,7 +15,6 @@
   ## Prerequisites
 
   Before we start ensure that you have the following:
-- .yml files containing the conda environments that we shall use
 - conda / miniforge
 - github account
 - Linux terminal access | wsl for windows | virtual machine
