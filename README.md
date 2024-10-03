@@ -62,7 +62,7 @@ fastq-dump --split-files ERR4920877 ERR4920878
 conda activate nextflow
 
 
-cd Workflow-Mg-t-Nextflow-Tutorial-for-Bioinformatics/scripts
+cd ../scripts
 touch my_nextflow_script.nf 
 ```
 - open the script in your preferred text editor In my case i will use Vs code
