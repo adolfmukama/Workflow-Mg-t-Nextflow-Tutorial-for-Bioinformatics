@@ -51,7 +51,7 @@ process MULTIQC_01 {
 
     output:
     // Directory where MultiQC results will be saved
-    path "multiqc_01"
+    path "multiqc_output"
 
     when:
     // Run this process only if the 'skip_multiqc01' parameter is not set (or is false)
@@ -60,8 +60,8 @@ process MULTIQC_01 {
     script:
     """
     # Create the output directory if it doesn't exist 
-    mkdir -p multiq_01
-    conda run -n multiqc multiqc fastqc_results/* --outdir multiqc_01
+    mkdir -p multiq_output
+    conda run -n multiqc multiqc fastqc_results/* --outdir multiqc_output
     """
 }
 
@@ -85,7 +85,7 @@ process FASTP_A {
     mkdir -p fastp_output
     
     # Loop through each sample ID from the sampleID file
-    for sample in \$(cat "\${sampleID}"); do
+    for sample in \$(cat "${sampleID}"); do
         conda run -n fastp fastp -i "${reads_miseq}"/\${sample}_1.fastq \
                       -I "${reads_miseq}"/\${sample}_2.fastq \
                       -o fastp_output/\${sample}_filt_fastp_R1.fastq \
