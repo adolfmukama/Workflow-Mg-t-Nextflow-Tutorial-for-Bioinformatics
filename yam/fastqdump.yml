@@ -1,0 +1,8 @@
+name: fastqdump
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - bioconda::sra-tools
+prefix: /opt/conda/envs/fastqdump
