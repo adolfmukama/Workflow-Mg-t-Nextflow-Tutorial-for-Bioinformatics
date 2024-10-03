@@ -1,5 +1,7 @@
 # Workflow-Mg-t-Nextflow-Tutorial-for-Bioinformatics
-# Introduction
+<details>
+  <summary><h2>Introduction</h2></summary>
+
 **Why Nextflow?:** I think its easier to use and simplifies the design and execution of bioinformatics complex workflows, enabling reproducibility and scalability across diverse computing environments. 
 
 ## Summary of some of the Beneifits:
@@ -19,6 +21,7 @@
 - github account
 - Linux terminal access | wsl for windows | virtual machine
 - Text editor e.g Vscode, nano, vim etc
+  </details>
 ### Step 01:
 - Open your terminal and clone this repo in your home directory <br>
 
@@ -72,16 +75,67 @@ cd scripts; touch nextflow_script.nf
 - Processes
 - Workflow execution block
 ```
-### step 03: Define parameters for our workflow
+### step 03: Define parameters for our workflow in a nextflow.config file
 ```
-// Workflow params
-params.reads = params.reads ?: '~/Workflow-Mg-t-Nextflow-Tutorial-for-Bioinformatics/data/sample.txt'
-// Skip the first  FASTQDUMP if true
-params.skip_fastqdump = false
-params.skip_fastqc01 = false
-params.skip_multiqc01 = false
-params.skip_fastp = false
-params.skip_multiqc02 = false
+#!/usr/bin/env nextflow
+
+// ================================
+// Define the workflow parameters
+// ================================
+
+// 'params' block defines user-provided inputs and options for the workflow.
+// These can be specified by the user when running the workflow or set to default values.
+params {
+    // Path to a file containing sample IDs. Each ID will be processed in the workflow.
+    sampleID = '/home/jovyan/Workflow-Mg-t-Nextflow-Tutorial-for-Bioinformatics/data/sample.txt'
+    
+    // Path to the directory containing MiSeq sequencing reads. This will be used for analysis.
+    reads_miseq = '/home/jovyan/Workflow-Mg-t-Nextflow-Tutorial-for-Bioinformatics/data/'
+    
+    // Flags to control skipping certain steps of the workflow. If set to 'true', these steps are skipped.
+    
+    // Skip the first FastQC analysis (before filtering with Fastp).
+    skip_fastqc01 = false
+    
+    // Skip running MultiQC after the first FastQC analysis.
+    skip_multiqc01 = false
+    
+    // Skip the Fastp filtering process (for read quality filtering).
+    skip_fastp = false
+    
+    // Skip the second FastQC analysis (after filtering with Fastp).
+    skip_fastqc02 = false
+    
+    // Skip running MultiQC after the second FastQC analysis.
+    skip_multiqc02 = false
+}
+
+// ================================
+// Executor Settings
+// ================================
+
+// The 'executor' block defines the settings for how tasks will be executed. 
+// This includes resource allocation and queue management for jobs in the workflow.
+executor {
+    // The 'queueSize' defines the maximum number of tasks that can be queued at once.
+    queueSize = 100  // Set to allow a maximum of 100 tasks in the queue.
+    
+    // 'cpus' specifies the number of CPU cores allocated for each task.
+    cpus = 4  // Each task will get 4 CPU cores.
+    
+    // 'memory' defines the amount of memory (RAM) allocated per task.
+    memory = '24 GB'  // Each task is allocated 24 GB of RAM.
+}
+
+// ================================
+// Additional workflow steps will follow here
+// ================================
+
+// Typically, the workflow's processes would be defined after these parameters.
+// For example, processes like FASTQC, Fastp, and MultiQC would be described,
+// with conditions for skipping the steps based on the parameters defined above.
+
+
 ```
 ### step 04: Create worflow processes
 
