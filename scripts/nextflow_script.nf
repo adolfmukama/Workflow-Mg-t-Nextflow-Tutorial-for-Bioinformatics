@@ -158,7 +158,7 @@ process MULTIQC_02 {
     """
     # Create the output directory if it doesn't exist
     mkdir -p multiqc_02
-    conda run -n multiq multiqc fastp_output/* --outdir multiqc_fastp
+    conda run -n multiqc multiqc fastp_output/* --outdir multiqc_fastp
     """
 }
 
