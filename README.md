@@ -364,6 +364,7 @@ workflow {
 ### Run our nextflow script
 
 Ensure that you are in the **scripts** directory
+Edit the config file to change the path to sample.txt and data dir (use ***pwd** to check your current working dir)
 
 ```
 nextflow run <your-script> -c nextflow.config 
